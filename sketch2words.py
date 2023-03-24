@@ -2,9 +2,17 @@ import os
 import openai
 import requests
 from PIL import Image
+from dotenv import load_dotenv
 
-# Replace 'your_api_key_here' with your actual API key
-openai.api_key = "apikey"
+# Load the .env file
+load_dotenv()
+
+# Get the API key from the .env file
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+# Set the OpenAI API key
+openai.api_key = openai_api_key
+
 
 def sketch_to_text(image_path):
     # Load the image and convert it to a URL

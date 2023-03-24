@@ -3,9 +3,17 @@ import openai
 import requests
 from PIL import Image
 import base64
+from dotenv import load_dotenv
 
-# Replace 'api_key' with your actual API key
-openai.api_key = "api_key"
+# Load the .env file
+load_dotenv()
+
+# Get the API key from the .env file
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+# Set the OpenAI API key
+openai.api_key = openai_api_key
+
 
 def sketch_to_text(image_path):
     # Load the image and convert it to a URL
@@ -50,7 +58,7 @@ def chat_with_gpt(text_description):
     return chat_text
 
 # Test the functions with a sample image
-image_path = "your_sketch_image_path_here"
+image_path = "/Users/yonghuang/code/VTalk/images/sad.jpeg"
 description = sketch_to_text(image_path)
 print(f"Description: {description}")
 
